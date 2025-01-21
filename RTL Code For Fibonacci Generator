@@ -1,0 +1,21 @@
+module fib_rtl(  
+  input clk,  
+  input rst,  
+  output reg [7:0] fib  
+);  
+reg [7:0] fib_next;  
+reg [7:0] fib_prev;  
+initial begin  
+  fib = 0;  
+  fib_prev = 1;  
+end  
+always @(posedge clk) begin  
+  if (rst) begin  
+    fib <= 0;  
+    fib_prev <= 1;  
+  end else begin  
+    fib <= fib + fib_prev;  
+    fib_prev <= fib;  
+  end  
+end  
+endmodule 
