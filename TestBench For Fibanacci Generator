@@ -1,0 +1,19 @@
+module fib_tb;  
+  reg clk;  
+  reg rst;  
+  wire [7:0] fib;  
+ fib_rtl dut(clk, rst, fib);  
+    initial begin  
+    clk = 0;  
+    rst = 1;  
+    #10 rst = 0;  
+  End  
+always #5 clk = ~clk;  
+initial begin  
+    $monitor("fib = %d", fib);  
+  End  
+initial begin  
+    #100;  
+ $finish;  
+  end  
+endmodule
